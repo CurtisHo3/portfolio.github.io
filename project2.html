@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jazz Melody Generation with Transformers | Curtis Ho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/project.css">
+</head>
+<body>
+    <header style="clip-path: none;">
+        <div class="container">
+            <nav class="flex items-center justify-between">
+                <div class="left flex items-center">
+                    <div>
+                        <a href="index.html#home">Home</a>
+                        <a href="index.html#about">About</a>
+                        <a href="index.html#school-projects">Projects</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="project-detail">
+        <div class="container">
+            <a href="index.html#school-projects" class="back-link">← Back to Projects</a>
+            
+            <h1 class="project-title">Jazz Melody Generation with Transformers</h1>
+            <p class="project-meta">Course: APS 360 | Date: Fall 2025</p>
+
+            <div class="project-hero">
+                <img src="./images/MusicGenOverview.jpg" alt="Music Generation Visualization">
+            </div>
+
+            <div class="project-content">
+                <!-- Quick Summary Box -->
+                <div class="summary-box">
+                    <h3>Project Overview</h3>
+                    <p>Developed a Transformer-based neural network to generate jazz melodies conditioned on chord progressions. The model learns from MIDI data to create musically coherent solos that respect harmonic structure.</p>
+                    <div class="tech-tags">
+                        <span>PyTorch</span>
+                        <span>Transformers</span>
+                        <span>Music Theory</span>
+                        <span>MIDI Processing</span>
+                    </div>
+                </div>
+
+                <!-- Key Achievements -->
+                <h2>Key Achievements</h2>
+                <ul class="achievements-list">
+                    <li><strong>25.77% Pitch Accuracy</strong> - Model successfully predicts melodic intervals</li>
+                    <li><strong>79.68% Duration Accuracy</strong> - Strong rhythmic pattern learning</li>
+                    <li><strong>Chord-Conditioned Generation</strong> - Melodies respect harmonic progressions</li>
+                    <li><strong>1800+ MIDI Files Processed</strong> - Curated jazz dataset from multiple sources</li>
+                </ul>
+
+                <!-- Problem Statement -->
+                <h2>Problem Statement</h2>
+                <p>Algorithmic music generation has traditionally relied on rule-based systems that lack the creative flexibility of human musicians. The challenge was to develop a system that could:</p>
+                <ul>
+                    <li>Generate jazz melodies that are harmonically appropriate</li>
+                    <li>Maintain musical coherence over extended sequences</li>
+                    <li>Respect both pitch and rhythmic patterns from training data</li>
+                    <li>Allow user control through chord progression input</li>
+                </ul>
+
+                <!-- Technical Approach -->
+                <h2>Technical Approach</h2>
+                
+                <h3>Data Pipeline</h3>
+                <p>Built a comprehensive MIDI processing pipeline that:</p>
+                <ul>
+                    <li><strong>Quantization:</strong> Time-aligned notes to 16th note grid (0.125s)</li>
+                    <li><strong>Chord Detection:</strong> Sliding window algorithm identifies pitch class sets every 0.5s</li>
+                    <li><strong>Interval Encoding:</strong> Hybrid representation using absolute pitches and relative intervals</li>
+                    <li><strong>Rest Handling:</strong> Explicit rest tokens preserve rhythmic structure</li>
+                </ul>
+
+                <div class="code-snippet">
+                    <h4>Chord Detection Algorithm</h4>
+                    <pre><code>def fast_chord_labels_named(path, window=0.5, step=0.5):
+    midi = pretty_midi.PrettyMIDI(path)
+    notes = [n for inst in midi.instruments if not inst.is_drum for n in inst.notes]
+    notes.sort(key=lambda n: n.start)
+    
+    chords = []
+    t = 0.0
+    while t < max_time:
+        active = [n for n in notes if not (n.end < start_w or n.start > end_w)]
+        if len(active) >= 2:
+            pcs = sorted(set(n.pitch % 12 for n in active))
+            chord_label = "-".join(str(pc) for pc in pcs)
+        else:
+            chord_label = "N"
+        chords.append((t, chord_label))
+        t += step
+    return chords</code></pre>
+                </div>
+
+                <h3>Model Architecture</h3>
+                <p>Implemented a custom Transformer architecture with:</p>
+                <ul>
+                    <li><strong>6 Encoder/Decoder Layers</strong> with 8 attention heads</li>
+                    <li><strong>Embedding Dimensions:</strong> 64 (notes) + 32 (chords) + 32 (durations) = 128D</li>
+                    <li><strong>Causal Masking:</strong> Prevents the model from looking at future tokens</li>
+                    <li><strong>Dual Output Heads:</strong> Separate prediction for pitch and duration</li>
+                </ul>
+
+                <div class="architecture-diagram">
+                    <img src="./images/MusicGenArchitecture.jpg" alt="Model Architecture Diagram">
+                    <p class="caption">Block diagrams comparing the baseline LSTM model (left) and the primary Transformer model (right) for melody generation</p>
+                </div>
+
+                <!-- Training Process -->
+                <h2>Training Process</h2>
+                <p>The model was trained for 15 epochs using:</p>
+                <ul>
+                    <li><strong>Optimizer:</strong> AdamW with learning rate 1e-4</li>
+                    <li><strong>Scheduler:</strong> ReduceLROnPlateau (patience=4, factor=0.5)</li>
+                    <li><strong>Regularization:</strong> 40% dropout, gradient clipping (max_norm=1.0)</li>
+                    <li><strong>Data Split:</strong> 80% train, 10% validation, 10% test</li>
+                </ul>
+
+                <div class="results-charts">
+                    <img src="./images/PrimaryGraph.png" alt="Training curves showing loss and accuracy">
+                    <p class="caption">Training and validation metrics over 15 epochs</p>
+                </div>
+
+                <!-- Results -->
+                <h2>Results & Analysis</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Test Performance</h3>
+                        <p class="metric">24.69%</p>
+                        <p>Pitch Accuracy</p>
+                        <p class="metric">81.38%</p>
+                        <p>Duration Accuracy</p>
+                    </div>
+                    <div class="result-card">
+                        <h3>Generation Quality</h3>
+                        <ul>
+                            <li>Harmonically appropriate</li>
+                            <li>Musically coherent phrases</li>
+                            <li>Controllable via chord input</li>
+                            <li>Realistic jazz phrasing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Generated Examples -->
+                <h2>Generated Examples</h2>
+                <p>Listen to melodies generated over standard jazz progressions:</p>
+                
+                <div class="audio-examples">
+                    <div class="audio-card">
+                        <h4>"Autumn Leaves" Progression</h4>
+                        <p>Am7 - D7 - Gmaj7 - Cmaj7 - F#m7 - B7 - Em - Em</p>
+                        <audio controls>
+                            <source src="./audio/autumnleaves.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-card">
+                        <h4>Custom Progression</h4>
+                        <p>Dm7 - G7 - Cmaj7 - A7</p>
+                        <audio controls>
+                            <source src="./audio/custom_generation.mid" type="audio/midi">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Technical Insights -->
+                <h2>Technical Insights</h2>
+                
+                <h3>Interval vs. Absolute Pitch Encoding</h3>
+                <p>The model uses a hybrid approach combining absolute pitches (after rests) and relative intervals (between consecutive notes). This reduces vocabulary size while maintaining melodic contour information.</p>
+
+                <h3>Causal Masking Implementation</h3>
+                <p>Implemented custom mask generation to ensure autoregressive properties:</p>
+                <div class="code-snippet">
+                    <pre><code>def generate_square_subsequent_mask(self, sz):
+    mask = (torch.triu(torch.ones(sz, sz)) == 1).transpose(0, 1)
+    mask = mask.float().masked_fill(mask == 0, float('-inf'))
+    return mask</code></pre>
+                </div>
+
+                <h3>Rest Penalty During Generation</h3>
+                <p>To prevent excessive rests, a penalty factor (7.0) is applied to rest token logits during sampling, encouraging more continuous melodic lines.</p>
+
+                <!-- Challenges & Solutions -->
+                <h2>Challenges & Solutions</h2>
+                
+                <div class="challenge-card">
+                    <h4>Challenge: Pitch Range Explosion</h4>
+                    <p><strong>Problem:</strong> Interval accumulation caused pitches to exceed MIDI range (0-127)</p>
+                    <p><strong>Solution:</strong> Implemented clamping to keep pitches between C0 (21) and C8 (108) during generation</p>
+                </div>
+
+                <div class="challenge-card">
+                    <h4>Challenge: Sparse Chord Coverage</h4>
+                    <p><strong>Problem:</strong> Only 40% of timesteps had recognizable chord labels</p>
+                    <p><strong>Solution:</strong> Filtered dataset to retain only notes with valid chord annotations, improving training signal</p>
+                </div>
+
+                <div class="challenge-card">
+                    <h4>Challenge: Sequence Length Alignment</h4>
+                    <p><strong>Problem:</strong> Generated melodies exceeded chord progression duration</p>
+                    <p><strong>Solution:</strong> Implemented time-tracking during generation with early stopping when target duration is reached</p>
+                </div>
+
+                <!-- Code & Documentation -->
+                <h2>Full Documentation</h2>
+                <p>For complete technical details, mathematical derivations, and additional analysis, download the full research paper:</p>
+                
+                <div class="download-section">
+                    <a href="./docs/APS360_Project_Progress_Report.pdf" class="download-button">
+                        <span>📄</span>
+                        Download Full Paper (PDF)
+                    </a>
+                    <a href="https://colab.research.google.com/drive/10ZLgXrWZsanGnocS-YUYOdTu-xHTxJBV?usp=sharing" class="download-button">
+                        <span>💻</span>
+                        View Code on Google Collab
+                    </a>
+                </div>
+
+                <!-- Future Work -->
+                <h2>Future Improvements</h2>
+                <ul>
+                    <li><strong>Attention Visualization:</strong> Implement attention weight analysis to understand what the model learns</li>
+                    <li><strong>Multi-Instrument Generation:</strong> Extend to generate full ensemble arrangements</li>
+                    <li><strong>Style Transfer:</strong> Condition on artist/era to generate style-specific solos</li>
+                    <li><strong>Real-time Performance:</strong> Optimize for low-latency interactive generation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 2rem 0; background: var(--light);">
+        <p>© 2025 Curtis Ho | <a href="mailto:ho.curtis@outlook.com">ho.curtis@outlook.com</a></p>
+    </footer>
+</body>
+</html>

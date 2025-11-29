@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1 | Curtis Ho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/project.css">
+</head>
+<body>
+    <header style="clip-path: none;">
+        <div class="container">
+            <nav class="flex items-center justify-between">
+                <div class="left flex items-center">
+                    <div>
+                        <a href="index.html#home">Home</a>
+                        <a href="index.html#about">About</a>
+                        <a href="index.html#school-projects">Projects</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="project-detail">
+        <div class="container">
+            <a href="index.html#school-projects" class="back-link">← Back to Projects</a>
+            
+            <h1 class="project-title">Robotic Arm for Cinematography</h1>
+            <p class="project-meta">Course: MIE 243 | Date: Fall 2025</p>
+
+            <div class="project-hero">
+                <img src="./images/Cam5.png" alt="Robotic Arm Project">
+            </div>
+
+            <div class="project-content">
+                <h2>Overview</h2>
+                <p>
+                    For the final project of this second-year course in engineering design, I worked in a group of five students to
+                     develop a detailed conceptual design of a robot arm for hobby-level cinematographers. The design will enable 
+                     hobbyists and beginner cinematographers to mount a light-weight camera to the arm’s end-effector to create 
+                     cinematic moving-camera shots at a low cost.
+                </p>    
+
+
+                <h2>Engineering Specification</h2>
+                <p>
+                    The following engineering specifications are derived from comprehensive market research. The objectives aim to 
+                    balance high performance, as outlined in existing designs, with practical considerations such as cost, 
+                    manufacturability, and usability.<br>
+                </p>
+
+                <h3>General Requirements</h3>
+                <ul>
+                    <li>User-friendly and simple to assemble with assembly time not exceeding 45 minutes</li>
+                    <li>No exotic or difficult-to-source materials or components required</li>
+                    <li>Total cost must not exceed $3,000 to ensure affordability</li>
+                    <li>Minimal maintenance required throughout operational lifetime</li>
+                </ul>
+
+                <h3>Performance Requirements</h3>
+                <ul>
+                    <li>Minimum operating reach of 1.5 meters</li>
+                    <li>Payload capacity between 3 to 5 kilograms</li>
+                    <li>Operating speed between 5 and 6 meters per second</li>
+                    <li>At least 6 degrees of freedom</li>
+                </ul>
+
+                <h3>Physical Constraints</h3>
+                <ul>
+                    <li>Maximum weight: 25 kg</li>
+                    <li>Standard electrical power source compatible with both 110V and 220V AC inputs</li>
+                </ul>
+
+                <h3>Additional Considerations</h3>
+                <ul>
+                    <li><strong>Noise level:</strong> Quiet operation</li>
+                    <li><strong>Durability:</strong> Components robust enough to withstand operational stresses</li>
+                    <li><strong>Safety:</strong> Compliance with safety standards</li>
+                </ul>
+
+                <h2>Candidate Designs</h2>
+                <p>Initial concept sketches exploring different mechanical configurations and joint arrangements.</p>
+
+                <div class="slideshow-container">
+                    <div class="slides-wrapper">
+                        <div class="slide active">
+                            <img src="./images/Cam1.png" alt="Candidate Design 1">
+                        </div>
+                        <div class="slide">
+                            <img src="./images/Cam2.png" alt="Candidate Design 2">
+                        </div>
+                        <div class="slide">
+                            <img src="./images/Cam3.png" alt="Candidate Design 3">
+                        </div>
+                        <div class="slide">
+                            <img src="./images/Cam4.png" alt="Candidate Design 4">
+                        </div>
+                        <div class="slide">
+                            <img src="./images/Cam5.png" alt="Candidate Design 5">
+                        </div>
+                        <div class="slide">
+                            <img src="./images/Cam6.png" alt="Candidate Design 6">
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation arrows -->
+                    <button class="slide-prev" onclick="changeSlide(-1)">❮</button>
+                    <button class="slide-next" onclick="changeSlide(1)">❯</button>
+                    
+                    <!-- Dots indicator -->
+                    <div class="slide-dots">
+                        <span class="dot active" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                    </div>
+                </div>
+
+                <h2>Final Design CAD Models & Images</h2>
+                <div class="project-gallery">
+                    <img src="./images/CamView1.png" alt="Detail 1">
+                    <img src="./images/CamView2.png" alt="Detail 2">
+                    <img src="./images/CamView3.png" alt="Detail 3">
+                </div>
+
+                <h2>Teamwork & Collaboration</h2>
+                <p>This project had an unconventional team formation process. Midway through the semester, another student and I joined an existing three-person team after a member departed from our original group due to unforeseen circumstances. With the newly formed five-person team, we had to quickly integrate different approaches and ideas.</p>
+
+                <p>Despite the unusual circumstances, the transition was smooth. We held initial meetings to align on project direction, shared our preliminary research and concept sketches, and divided responsibilities based on each member's strengths. As late joiners, we focused on:</p>
+
+                <ul>
+                    <li><strong>Project Management:</strong> Coordinating timelines and ensuring deliverables stayed on track</li>
+                    <li><strong>Technical Documentation:</strong> Synthesizing team notes into a cohesive final report</li>
+                    <li><strong>Task Organization:</strong> Breaking down remaining work into concise, manageable components</li>
+                </ul>
+
+                <p>I am grateful for this opportunity to learn the importance of adaptability in team settings. Effective communication is the key to overcoming structural challenges in collaborative projects.</p>
+        </div>
+    </section>
+    <footer style="text-align: center; padding: 2rem 0; background: var(--light);">
+        <p>© 2025 Curtis Ho | <a href="mailto:ho.curtis@outlook.com">ho.curtis@outlook.com</a></p>
+    </footer>
+    <script>
+    let currentSlideIndex = 1;
+    showSlide(currentSlideIndex);
+
+    function changeSlide(n) {
+        showSlide(currentSlideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+        
+        if (n > slides.length) { currentSlideIndex = 1 }
+        if (n < 1) { currentSlideIndex = slides.length }
+        
+        // Hide all slides
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+        
+        // Remove active from all dots
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove("active");
+        }
+        
+        // Show current slide and activate dot
+        slides[currentSlideIndex - 1].classList.add("active");
+        dots[currentSlideIndex - 1].classList.add("active");
+    }
+    </script>
+</body>
+</html>

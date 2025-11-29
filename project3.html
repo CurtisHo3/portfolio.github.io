@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Management System | Curtis Ho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/project.css">
+</head>
+<body>
+    <header style="clip-path: none;">
+        <div class="container">
+            <nav class="flex items-center justify-between">
+                <div class="left flex items-center">
+                    <div>
+                        <a href="index.html#home">Home</a>
+                        <a href="index.html#about">About</a>
+                        <a href="index.html#school-projects">Projects</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="project-detail">
+        <div class="container">
+            <a href="index.html#school-projects" class="back-link">← Back to Projects</a>
+            
+            <h1 class="project-title">Access Management System for Toronto Paramedic Services</h1>
+            <p class="project-meta">Course: APS112 | Winter 2025</p>
+
+            <div class="project-content">
+                <!-- Quick Summary -->
+                <div class="summary-box">
+                    <h3>Project Overview</h3>
+                    <p>Designed a Role-Based Access Control (RBAC) framework for Toronto Paramedic Services to streamline employee access management across 1,800+ personnel and 45+ stations. The solution replaces manual processes with an automated system that ensures security compliance and reduces processing time from weeks to under 2 days.</p>
+                    <div class="tech-tags">
+                        <span>Systems Design</span>
+                        <span>RBAC</span>
+                        <span>Process Engineering</span>
+                        <span>Healthcare IT</span>
+                    </div>
+                </div>
+
+                <!-- The Problem -->
+                <h2>The Challenge</h2>
+                <p>Toronto Paramedic Services (TPS) lacked a systematic approach to manage employee access permissions across email, software applications, virtual files, and physical key-fob systems. Department managers manually tracked and updated permissions, introducing:</p>
+                <ul>
+                    <li><strong>Delays:</strong> Access changes took several weeks to process</li>
+                    <li><strong>Security Risks:</strong> No centralized audit log or oversight</li>
+                    <li><strong>Inefficiency:</strong> Manual processes across 45+ stations</li>
+                    <li><strong>Compliance Issues:</strong> Difficulty meeting PHIPA requirements for patient data protection</li>
+                </ul>
+
+                <!-- Our Solution -->
+                <h2>Our Solution: RBAC Matrix Framework</h2>
+                <p>After evaluating three design alternatives using Pugh chart analysis, our team proposed a Role-Based Access Control (RBAC) matrix that defines permissions for each role and automates approval workflows.</p>
+
+                <div class="results-grid">
+                    <div class="result-card">
+                        <p class="metric">&lt;2 Days</p>
+                        <p>Access Change Processing</p>
+                    </div>
+                    <div class="result-card">
+                        <p class="metric">100%</p>
+                        <p>Task Effectiveness Target</p>
+                    </div>
+                    <div class="result-card">
+                        <p class="metric">2</p>
+                        <p>Manual Inputs Required</p>
+                    </div>
+                    <div class="result-card">
+                        <p class="metric">1,800+</p>
+                        <p>Employees Managed</p>
+                    </div>
+                </div>
+
+                <!-- Design Process -->
+                <h2>Design Process</h2>
+                <p>Our team followed a rigorous engineering design methodology:</p>
+                
+                <h3>1. Stakeholder Analysis</h3>
+                <ul>
+                    <li>Conducted client meetings with Commander John McPhee (Systems & IT Governance)</li>
+                    <li>Identified key stakeholders: City of Toronto, IT Division, patients, payroll, Toronto Public Health</li>
+                    <li>Mapped legal constraints from PHIPA (Personal Health Information Protection Act)</li>
+                </ul>
+
+                <h3>2. Requirements Definition</h3>
+                <ul>
+                    <li><strong>Effectiveness:</strong> >92% task completion rate</li>
+                    <li><strong>Efficiency:</strong> Process changes in <2 days</li>
+                    <li><strong>Minimal Complexity:</strong> <5 manual steps</li>
+                    <li><strong>Maintainability:</strong> Quarterly maintenance only</li>
+                </ul>
+
+                <h3>3. Idea Generation & Selection</h3>
+                <p>Generated 52 initial concepts using:</p>
+                <ul>
+                    <li>Morph charts and SCAMPER methodology</li>
+                    <li>Reverse brainstorming to identify failure modes</li>
+                    <li>Multi-voting to narrow to 12 viable options</li>
+                    <li>Feasibility analysis reducing to 3 final candidates</li>
+                </ul>
+
+                <!-- Alternative Designs -->
+                <h2>Alternative Designs Considered</h2>
+                
+                <div class="challenge-card">
+                    <h4>Design 1: RBAC Matrix (Selected)</h4>
+                    <p>Predefined access control matrix with automated permission changes based on role transitions. Supervisor approval via email triggers updates. Temporary assignments automatically expire on specified dates.</p>
+                    <p><strong>Why we chose this:</strong> Best balance of effectiveness, efficiency, and maintainability with minimal AI-related risks.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <h4>Design 2: Smart Dashboard with AI Anomaly Detection</h4>
+                    <p>Online interface with LLM-based risk scoring to flag suspicious access requests. Calculated urgency scores based on scheduled change dates.</p>
+                    <p><strong>Why we didn't choose this:</strong> Higher maintenance requirements and potential AI hallucination risks.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <h4>Design 3: Dual Validation with Graph Database</h4>
+                    <p>Graph database mapping user-permission relationships with dual approval (supervisor + LLM) for all changes.</p>
+                    <p><strong>Why we didn't choose this:</strong> Required 2+ manual inputs with potential escalation, less efficient than RBAC.</p>
+                </div>
+
+                <!-- Process Flowchart -->
+                <h2>Final Design: Permission Change Process</h2>
+                <div class="RBAC">
+                    <img src="./images/RBAC.png" alt="RBAC Permission Change Table">
+                    <p class="caption">RBAC Matrix</p>
+                </div>
+                <div class="architecture-diagram">
+                    <img src="./images/PermsChangeDiagram.png" alt="RBAC Permission Change Flowchart">
+                    <p class="caption">Automated workflow for processing employee access changes through the RBAC matrix</p>
+                </div>
+
+                <!-- Key Features -->
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Automated Role Mapping:</strong> Pre-defined matrix assigns permissions based on employee roles</li>
+                    <li><strong>Supervisor Approval Workflow:</strong> Email-based approval system for non-routine changes</li>
+                    <li><strong>Temporary Access Handling:</strong> Automatic expiration for acting assignments and training periods</li>
+                    <li><strong>Audit Logging:</strong> Complete compliance with PHIPA requirements for patient data protection</li>
+                    <li><strong>Multi-Station Support:</strong> Scalable framework across all 45+ TPS locations</li>
+                </ul>
+
+                <!-- Testing & Validation -->
+                <h2>Testing & Validation</h2>
+                <p>Developed a Python prototype to validate the design against edge cases:</p>
+                <ul>
+                    <li><strong>Onboarding:</strong> Adding roles from zero-permission state</li>
+                    <li><strong>Offboarding:</strong> Removing all access upon departure</li>
+                    <li><strong>Role Transitions:</strong> Modifying permissions during promotions/transfers</li>
+                    <li><strong>Acting Assignments:</strong> Temporary access with automatic expiry</li>
+                </ul>
+                <p><strong>Success Criteria:</strong> 100% task completion rate across all test scenarios (per client requirement)</p>
+
+                <!-- My Contributions -->
+                <h2>My Contributions</h2>
+                <ul>
+                    <li>Documented and organized meeting notes for team meatings and client meetings</li>
+                    <li>Conducted research on RBAC systems and healthcare IT compliance</li>
+                    <li>Developed process flowcharts for candidate designs</li>
+                    <li>Contributed to technical writing and documentation</li>
+                </ul>
+
+                <!-- Reflection -->
+                <h2>What I Learned</h2>
+                <p>This project strengthened my skills in systems engineering and stakeholder management. Working with a real client from Toronto Paramedic Services taught me the importance of balancing technical feasibility with operational constraints and legal compliance.</p>
+                <p>The iterative design process, from generating 52 ideas to selecting one optimal solution, reinforced the value of structured decision-making frameworks like Pugh charts and feasibility analysis in engineering design.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 2rem 0; background: var(--light);">
+        <p>© 2025 Curtis Ho | <a href="mailto:ho.curtis@outlook.com">ho.curtis@outlook.com</a></p>
+    </footer>
+</body>
+</html>
